@@ -2,6 +2,9 @@
 
 var path = require('path');
 var webpack = require('webpack');
+var CopyWebpackPlugin = require('copy-webpack-plugin');
+const fs = require('fs');
+var WebpackOnBuildPlugin = require('on-build-webpack');
 
 module.exports = {
 	cache: true,
@@ -28,6 +31,18 @@ module.exports = {
 		modules: ['node_modules']
 	},
         plugins: [
+            //copy bootstrap resources from node_modules
+            new CopyWebpackPlugin([
+		{ from: 'node_modules/bootstrap/dist/css/bootstrap.min.css'},
+		{ from: 'node_modules/bootstrap/fonts', to:'fonts'}
+            ]),
+            //change path to fonts/ at bootstrap resources to make it work
+            new WebpackOnBuildPlugin(function(stats) {
+		const fn = path.resolve(__dirname, 'dist/bootstrap.min.css');
+		let t = fs.readFileSync( fn).toString('utf8');
+		t = t.replace(/..\/fonts\//g, "./fonts/");
+		fs.writeFileSync(fn, t)
+            }),
             new webpack.ProvidePlugin({
 		Promise: "bluebird"
             }),
