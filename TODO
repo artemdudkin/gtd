@@ -1,0 +1,28 @@
+"done" field not saved if filled at creation
+cannot create several tasks in series - second one will edit the first one
+correct login errors
+
+get boostrap resources from node_modules
+return task list after create/update/delete
+global error handler
+add "delete" button at page "edit task"
+add "new" button at page "edit task"
+
+tags at task creation
+filter by tag at t-all
+filter by tag at t-today
+
+offline work
+
+registration
+native app
+task-in-the-future
+block only one line on edit (not whole table)
+https
+inline first loader
+show age of task
+bind tasks to project
+create t-week
+cyclic tasks
+
+profile t-all to make it fast ?!
