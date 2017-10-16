@@ -1,7 +1,6 @@
 cannot create several tasks in series - second one will edit the first one
 correct login errors
 
-get boostrap resources from node_modules
 return task list after create/update/delete
 global error handler
 add "delete" button at page "edit task"
