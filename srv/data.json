@@ -1,0 +1,29 @@
+{
+  "task": {
+    "1": {
+      "name": "task 1",
+      "id": 1
+    },
+    "2": {
+      "name": "task2",
+      "forToday": true,
+      "id": 2
+    },
+  },
+  "project": {
+    "913207": {
+      "description": "1",
+      "pts": "qwerfqwerqr",
+      "technical_card": "3",
+      "id": "913207"
+    }
+  },
+  "user": [
+    {
+      "type": "manager",
+      "name": "asd",
+      "pwd": "asd",
+      "timestamp": 1504889040214
+    }
+  ]
+}

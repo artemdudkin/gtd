@@ -1,0 +1,8 @@
+.FormText {
+	position: relative;
+	top: 0.5em;
+}
+
+.FormText__bold {
+	font-weight: bold;
+}
