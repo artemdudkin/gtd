@@ -55,8 +55,12 @@ class Task extends React.Component {
     }
     
     onChange(event) {
-    	const id    = event.target.id;
-    	const value = event.target.value;    	
+    	const id  = event.target.id;
+    	let value = event.target.value;
+
+	if (id=="done" && value==true) value=Date.now();
+
+console.log("id", id, 'value', value);
     
 	this.props.edit_change(id, value);
     }
