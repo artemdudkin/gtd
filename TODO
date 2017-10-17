@@ -4,6 +4,7 @@ correct login errors
 return task list after create/update/delete
 global error handler
 add "new" button at page "view task"
+pressing "cancel" at "edit task" should return to "task-list" with saved scroll position
 
 tags at task creation
 filter by tag at t-all
