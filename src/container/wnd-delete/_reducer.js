@@ -1,4 +1,3 @@
-import lodash from 'lodash';
 import {
 	WND_DELETE_SHOW,
 	WND_DELETE_HIDE,

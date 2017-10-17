@@ -1,6 +1,5 @@
 import React    from 'react';
 import autobind from 'autobind-decorator';
-import lodash   from 'lodash';
 
 import { FormControl } from 'react-bootstrap';
 

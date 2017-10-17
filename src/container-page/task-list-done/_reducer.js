@@ -1,4 +1,4 @@
-import lodash from 'lodash';
+import get from 'lodash.get';
 import {
 	TASK_LIST_DONE_LOCK,
 	TASK_LIST_DONE_OK,
@@ -23,7 +23,7 @@ export default (state = initialState, action) => {
     };
   
   case TASK_LIST_DONE_OK:
-    let data = lodash.get(action, "data.data", {});
+    let data = get(action, "data.data", {});
     
     return {
       save_error : false,

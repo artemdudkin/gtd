@@ -1,4 +1,4 @@
-import lodash from 'lodash';
+import get from 'lodash.get';
 import {
 	PROJECT_LIST_LOCK,
 	PROJECT_LIST_OK,
@@ -23,7 +23,7 @@ export default (state = initialState, action) => {
     };
   
   case PROJECT_LIST_OK:
-    let data = lodash.get(action, "data.data", {});
+    let data = get(action, "data.data", {});
     
     return {
       save_error : false,

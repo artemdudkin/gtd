@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import autobind    from 'autobind-decorator';
-import lodash      from 'lodash';
+import get         from 'lodash.get';
 import { injectAsyncReducer } from '../../store';
 
 import {
@@ -36,7 +36,6 @@ import Text       from '../../tag/form-text';
 import Wait       from '../../tag/wait';	
 import WndError   from '../../tag/wnd-error';
 import BlockError from '../../tag/block-error';
-import DatePicker from '../../tag/form-datepicker';
 import Checkbox   from '../../tag/form-checkbox';
 import UniControl from '../../tag/uni-control';
 import Menu       from '../../container/menu';
@@ -52,7 +51,7 @@ class Project extends React.Component {
     }
     
     componentWillMount(){
-	const id = lodash.get( this.props, 'match.params.id', '');
+	const id = get( this.props, 'match.params.id', '');
     	if (id=='new') {
 		this.props.edit_clear();
 	} else {
@@ -74,7 +73,7 @@ class Project extends React.Component {
     
     clickSave(){
 	const { data } = this.props;    
-	const id = lodash.get( this.props, 'match.params.id', '');
+	const id = get( this.props, 'match.params.id', '');
     	this.props.save(id, data);
     }
     
@@ -87,12 +86,12 @@ class Project extends React.Component {
     }
 
     clickDeleteOk(){
-	const id = lodash.get( this.props, 'match.params.id', '');
+	const id = get( this.props, 'match.params.id', '');
 	this.props.remove(id);
     }
     
     render() {
-	const id = lodash.get( this.props, 'match.params.id', '');
+	const id = get( this.props, 'match.params.id', '');
 	let { edit } = this.props;
 	if (id == 'new') {
 		edit = true;
