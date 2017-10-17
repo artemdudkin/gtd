@@ -43,6 +43,7 @@ module.exports = {
 		t = t.replace(/..\/fonts\//g, "./fonts/");
 		fs.writeFileSync(fn, t)
             }),
+            //IE11 promeises fix
             new webpack.ProvidePlugin({
 		Promise: "bluebird"
             }),
