@@ -170,10 +170,21 @@ console.log("id", id, 'value', value);
 					</div>
 				}
 				{edit &&
-	                               <div style={{float:'right'}}>
+					<div>
+					<Col sm={3}>
+					</Col>
+					<Col sm={2}>
+					<div style={{float:'left'}}>
+						<Button key='button-delete' onClick={this.clickDeleteShow}>Delete</Button>
+					</div>
+					</Col>
+					<Col sm={7}>
+					<div style={{float:'right'}}>
 	                               		<Button key='button-save' bsStyle="primary" onClick={this.clickSave}>Save</Button>&nbsp;&nbsp;
 	                               		<Button key='button-cancel' onClick={this.clickCancel}>Cancel</Button>
 	                               	</div>
+					</Col>
+					</div>
 				}
 			</Col>
 			</div>

@@ -3,8 +3,7 @@ correct login errors
 
 return task list after create/update/delete
 global error handler
-add "delete" button at page "edit task"
-add "new" button at page "edit task"
+add "new" button at page "view task"
 
 tags at task creation
 filter by tag at t-all
