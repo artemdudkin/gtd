@@ -8,7 +8,7 @@
       "name": "task2",
       "forToday": true,
       "id": 2
-    },
+    }
   },
   "project": {
     "913207": {
@@ -26,4 +26,4 @@
       "timestamp": 1504889040214
     }
   ]
-}
+}             
