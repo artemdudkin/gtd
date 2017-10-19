@@ -52,6 +52,14 @@ class Task extends React.Component {
     componentWillMount(){
 	this.clickCancel();
     }
+
+    componentWillUpdate(nextProps, nextState) {
+	//should work ONLY when user pressed Add after new item was created
+	//(componentWillMount will not be fired in this case as it is same page)
+	const id = get( nextProps, 'match.params.id', '');
+	const { data } = nextProps;
+	if (data.id && id === 'new') this.clickCancel(nextProps);
+    }
     
     onChange(event) {
     	const id  = event.target.id;
@@ -59,8 +67,6 @@ class Task extends React.Component {
 
 	if (id=="done" && value==true) value=Date.now();
 
-console.log("id", id, 'value', value);
-    
 	this.props.edit_change(id, value);
     }
 
@@ -75,12 +81,13 @@ console.log("id", id, 'value', value);
     	this.props.save(id, data);
     }
     
-    clickCancel(){
-	const id = get( this.props, 'match.params.id', '');
+    clickCancel(props){
+	if (!props) props = this.props;
+	const id = get( props, 'match.params.id', '');
     	if (id=='new') {
-		this.props.edit_clear();
+		props.edit_clear();
 	} else {
-		this.props.load(id);
+		props.load(id);
 	}
     }
 
