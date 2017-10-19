@@ -86,14 +86,13 @@ console.log("raw_data", raw_data);
 			}
 		}
 		tags.sort( (a, b)=>{
-			const a_name = (a.name||"").toLowerCase();
-			const b_name = (b.name||"").toLowerCase();
-			if (a_name > b_name) return 1;
-			if (a_name < b_name) return -1;
+			if (a.qty < b.qty) return 1;
+			if (a.qty > b.qty) return -1;
 			return 0;
 		})
 console.log("TAGS", tags);
-console.log("TAGS SHOW", tags.filter(_=>(_.qty>1)).map(_=>_.name));
+console.log("TAGS SHOW", tags.filter(_=>(_.qty>1)));
+console.log("TAGS SHOW NAMES", tags.filter(_=>(_.qty>1)).map(_=>_.name));
 */
 		//filter data
 		const data = []
