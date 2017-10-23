@@ -66,34 +66,7 @@ export class TaskList extends Component {
 	
 	render() {
 		const { data:raw_data, locked, error } = this.props;
-/*
-		const tags = [];
-console.log("raw_data", raw_data);
-		for (var i in raw_data) {
-			const s = raw_data[i].name.split(":");
-			if (s[1]) {
-				const name = s[0].trim().toUpperCase();
-				let index=-1; 
-				for (var i=0; i<tags.length && index==-1; i++) {
-					if ((tags[i].name||"").trim().toUpperCase() == name) index=i;
-				}
 
-				if (index == -1) {
-					tags.push({name:s[0], qty:1});
-				} else {
-					tags[index].qty++; 
-				}
-			}
-		}
-		tags.sort( (a, b)=>{
-			if (a.qty < b.qty) return 1;
-			if (a.qty > b.qty) return -1;
-			return 0;
-		})
-console.log("TAGS", tags);
-console.log("TAGS SHOW", tags.filter(_=>(_.qty>1)));
-console.log("TAGS SHOW NAMES", tags.filter(_=>(_.qty>1)).map(_=>_.name));
-*/
 		//filter data
 		const data = []
 		for (var i in raw_data) {

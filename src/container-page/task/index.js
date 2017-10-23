@@ -18,6 +18,7 @@ import {
 } from '../../container/wnd-delete/_actions';
 
 import {
+	Badge,
 	Button,
 	FormGroup,
 	InputGroup,
@@ -54,11 +55,13 @@ class Task extends React.Component {
     }
 
     componentWillUpdate(nextProps, nextState) {
-	//should work ONLY when user pressed Add after new item was created
-	//(componentWillMount will not be fired in this case as it is same page)
 	const id = get( nextProps, 'match.params.id', '');
 	const { data } = nextProps;
-	if (data.id && id === 'new') this.clickCancel(nextProps);
+	if (data.id && id === 'new') {
+		//should work ONLY when user pressed Add after new item was created
+		//(componentWillMount will not be fired in this case as it is same page)
+		this.clickCancel(nextProps);
+	}
     }
     
     onChange(event) {
@@ -100,8 +103,42 @@ class Task extends React.Component {
 	const id = get( this.props, 'match.params.id', '');
 	this.props.remove(id);
     }
+
+    clickBadge( value ){
+	const { data } = this.props;
+	const { name } = data;
+
+	this.props.edit_change("name", value + ": " + (name || ""));
+    }
     
     render() {
+	const { dataList:raw_data } = this.props;
+	const tags = [];
+	for (var i in raw_data) {
+		const s = raw_data[i].name.split(":");
+		if (s[1]) {
+			const name = s[0].trim().toUpperCase();
+			let index=-1; 
+			for (var i=0; i<tags.length && index==-1; i++) {
+				if ((tags[i].name||"").trim().toUpperCase() == name) index=i;
+			}
+
+			if (index == -1) {
+				tags.push({name:s[0], qty:1});
+			} else {
+				tags[index].qty++; 
+			}
+		}
+	}
+	tags.sort( (a, b)=>{
+		if (a.qty < b.qty) return 1;
+		if (a.qty > b.qty) return -1;
+		return 0;
+	})
+//console.log("TAGS", tags);
+//console.log("TAGS SHOW", tags.filter(_=>(_.qty>1)));
+//console.log("TAGS SHOW NAMES", tags.filter(_=>(_.qty>1)).map(_=>_.name));
+
 	const id   = get( this.props, 'match.params.id', '');
 	const edit = (id == 'new' ? true :  'edit'== get( this.props, 'match.params.mode', ''));
 
@@ -136,9 +173,14 @@ class Task extends React.Component {
 							<UniControl 
 								editable={edit}
 								onChange={this.onChange}
-								value={name}
-							/>
-							
+								value={name} />
+
+							{tags.filter((_,index) => {
+								return index < 6;
+							})
+							.map(_=>{
+								return <span><Badge style={{cursor:'pointer', backgroundColor: '#337ab7', marginTop:20}} onClick={this.clickBadge.bind(this, _.name)}>{_.name}</Badge>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+							},this)}
 						</Col>
 					</FormGroup>
 					<FormGroup controlId="forToday" key="forToday">
@@ -202,10 +244,11 @@ class Task extends React.Component {
 }
 
 const mapStateToProps = state => ({
-    locked : state.task.locked,
-    error  : state.task.error,
-    data   : state.task.data,
-    edit   : state.task.edit,
+    locked   : state.task.locked,
+    error    : state.task.error,
+    data     : state.task.data,
+    edit     : state.task.edit,
+    dataList : (state.taskList ? state.taskList.data : {}),
 });
 
 const mapDispatchToProps = {
