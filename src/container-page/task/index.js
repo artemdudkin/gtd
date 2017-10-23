@@ -110,8 +110,8 @@ class Task extends React.Component {
 
 	this.props.edit_change("name", value + ": " + (name || ""));
     }
-    
-    render() {
+
+    getTags(){
 	const { dataList:raw_data } = this.props;
 	const tags = [];
 	for (var i in raw_data) {
@@ -139,8 +139,14 @@ class Task extends React.Component {
 //console.log("TAGS SHOW", tags.filter(_=>(_.qty>1)));
 //console.log("TAGS SHOW NAMES", tags.filter(_=>(_.qty>1)).map(_=>_.name));
 
+	return tags;
+    }
+    
+    render() {
 	const id   = get( this.props, 'match.params.id', '');
 	const edit = (id == 'new' ? true :  'edit'== get( this.props, 'match.params.mode', ''));
+
+	const tags = edit ? this.getTags() : [];
 
 	const { data, locked, error, save_error } = this.props;
 
@@ -170,7 +176,7 @@ class Task extends React.Component {
 							Name
 						</Col>
 						<Col sm={7}>
-							<UniControl 
+							<UniControl ref="name"
 								editable={edit}
 								onChange={this.onChange}
 								value={name} />
