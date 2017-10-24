@@ -204,7 +204,7 @@ class Task extends React.Component {
 						</Col>
 					</FormGroup>
 					{id != 'new' &&
-					<FormGroup controlId="done" key="done">
+					  <FormGroup controlId="done" key="done">
 						<Col componentClass={ControlLabel} sm={5}>
 							Done
 						</Col>
@@ -217,7 +217,7 @@ class Task extends React.Component {
 								value={done}
 							/>
 						</Col>
-					</FormGroup>
+					  </FormGroup>
 					}
 				</Form>	
 				{!edit && <div style={{float:'right'}}>
@@ -230,9 +230,11 @@ class Task extends React.Component {
 					<Col sm={3}>
 					</Col>
 					<Col sm={2}>
-					<div style={{float:'left'}}>
+					{id != 'new' &&
+					  <div style={{float:'left'}}>
 						<Button key='button-delete' onClick={this.clickDeleteShow}>Delete</Button>
-					</div>
+					  </div>
+					}
 					</Col>
 					<Col sm={7}>
 					<div style={{float:'right'}}>
