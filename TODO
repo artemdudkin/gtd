@@ -1,4 +1,5 @@
 correct login errors
+correct errors at pages (no errors right now)
 
 return task list after create/update/delete
 global error handler
