@@ -11,7 +11,7 @@ import {
 const initialState = {
   error : '',
   locked: false,
-  data  : {},
+  data  : {forToday:true},
   edit  : false,
 };
 
@@ -64,7 +64,7 @@ export default (state = initialState, action) => {
   case TASK_EDIT_CLEAR:  
     return {
       ...state,
-      data: {},
+      data: {forToday:true},
     };
     
   default:
