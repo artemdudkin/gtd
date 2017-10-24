@@ -203,6 +203,7 @@ class Task extends React.Component {
 							/>
 						</Col>
 					</FormGroup>
+					{id != 'new' &&
 					<FormGroup controlId="done" key="done">
 						<Col componentClass={ControlLabel} sm={5}>
 							Done
@@ -217,6 +218,7 @@ class Task extends React.Component {
 							/>
 						</Col>
 					</FormGroup>
+					}
 				</Form>	
 				{!edit && <div style={{float:'right'}}>
 						<Button key='button-edit' bsStyle="primary" onClick={this.clickEdit}>Edit</Button>&nbsp;&nbsp;
