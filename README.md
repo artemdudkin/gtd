@@ -1,3 +1,3 @@
 # gtd
 
-Just another "getting thins done" tool.
+Just another "getting things done" tool.
