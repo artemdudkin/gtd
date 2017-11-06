@@ -6,18 +6,18 @@ let _dispatch;
 export default {
 	setDispatch : (dispatch) => {_dispatch=dispatch},
 	
-	login              : (data) => { return post('/login', data)},
-	logout             : (data) => { return post('/logout', data)},
+	login              : (data) => { return post('./login', data)},
+	logout             : (data) => { return post('./logout', data)},
 
-	getTaskList        : (data) => { return post('/getTaskList', data)},
-	getTask            : (data) => { return post('/getTask', data)},
-	setTask            : (data) => { return post('/setTask', data)},
-	deleteTask         : (data) => { return post('/deleteTask', data)},
+	getTaskList        : (data) => { return post('./getTaskList', data)},
+	getTask            : (data) => { return post('./getTask', data)},
+	setTask            : (data) => { return post('./setTask', data)},
+	deleteTask         : (data) => { return post('./deleteTask', data)},
 
-	getProjectList     : (data) => { return post('/getProjectList', data)},
-	getProject         : (data) => { return post('/getProject', data)},
-	setProject         : (data) => { return post('/setProject', data)},
-	deleteProject      : (data) => { return post('/deleteProject', data)},
+	getProjectList     : (data) => { return post('./getProjectList', data)},
+	getProject         : (data) => { return post('./getProject', data)},
+	setProject         : (data) => { return post('./setProject', data)},
+	deleteProject      : (data) => { return post('./deleteProject', data)},
 }
 /*
 const toQueryString = (data) => {
@@ -54,7 +54,7 @@ const post_as_get = (url, data) => {
 */
 
 const post = (url, data) => {
-	// если данные есть в кэше, то запрос посылать не будем
+	// ГҐГ±Г«ГЁ Г¤Г Г­Г­Г»ГҐ ГҐГ±ГІГј Гў ГЄГЅГёГҐ, ГІГ® Г§Г ГЇГ°Г®Г± ГЇГ®Г±Г»Г«Г ГІГј Г­ГҐ ГЎГіГ¤ГҐГ¬
 	var cached = cache.get(url, data);
 
 	if (cached) {
